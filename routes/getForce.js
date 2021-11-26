@@ -18,28 +18,32 @@ var EventEmitter = require('events').EventEmitter
 var myevent = new EventEmitter();
 
 router.get('/', function(req, res, next) {
-  let data = JSON.stringify(req.body) +"\r\n"
-  //触发事件   
-  try{
-    myevent.emit('abc',data)
-    console.log(data);
-  }catch(err){
-    console.log(err)
-  }
+  console.log("@",req)
+  console.log("@@",req.body)
+  console.log("#",res);
+  console.log("@@",res.body)
+  // let data = JSON.stringify(req.body) +"\r\n"
+  // //触发事件   
+  // try{
+  //   myevent.emit('abc',data)
+  //   console.log(data);
+  // }catch(err){
+  //   console.log(err)
+  // }
 
-  console.log("@req",req)
-  console.log("@res",res)
-  var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
+  // console.log("@req",req)
+  // console.log("@res",res)
+  // var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
 
-  connection.query(addSql,addSqlParams,function (err, result) {
-      if(err){
-       console.log('[INSERT ERROR] - ',err.message);
-       return;
-      }
-      result.message='success'
-      console.log(result.message)             
-  });
-  res.send(req.body)
+  // connection.query(addSql,addSqlParams,function (err, result) {
+  //     if(err){
+  //      console.log('[INSERT ERROR] - ',err.message);
+  //      return;
+  //     }
+  //     result.message='success'
+  //     console.log(result.message)             
+  // });
+  // res.send(req.body)
 });
 
 module.exports = {
