@@ -17,7 +17,7 @@ var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_o
 var EventEmitter = require('events').EventEmitter
 var myevent = new EventEmitter();
 
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   let data = JSON.stringify(req.body) +"\r\n"
   //触发事件   
   try{
