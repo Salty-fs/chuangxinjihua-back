@@ -18,10 +18,9 @@ var EventEmitter = require('events').EventEmitter
 var myevent = new EventEmitter();
 
 router.post('/', function(req, res, next) {
-  console.log("@",req)
-  console.log("@@",req.body)
-  console.log("#",res);
-  console.log("@@",res.body)
+  console.log("@",req.body)
+  // console.log("@@",req.body)
+  res.send(req.body)
   // let data = JSON.stringify(req.body) +"\r\n"
   // //触发事件   
   // try{
