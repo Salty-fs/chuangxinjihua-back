@@ -17,7 +17,7 @@ var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_o
 var EventEmitter = require('events').EventEmitter
 var myevent = new EventEmitter();
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   console.log("@",req)
   console.log("@@",req.body)
   console.log("#",res);
