@@ -15,13 +15,15 @@ app.all('*', (req, res, next) => {
 });
 
 var test = require('./routes/test');
-var getForce = require('./routes/getForce');
-var sendForce = require('./routes/sendForce');
+var getForce = require('./routes/getForce').router;
+// var sendForce = require('./routes/sendForce');
 
 app.use('/test',test)
 app.use('/getforce',getForce)
-app.use('/sendforce',sendForce)
+// app.use('/sendforce',sendForce)
 
 app.listen(12345,()=>{
     console.log('Server running at http://localhost:12345')
 })
+
+module.exports = app

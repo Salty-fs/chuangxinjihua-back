@@ -4,18 +4,10 @@ var URL = require('url');
 const fs = require('fs')
 const expressWs = require('express-ws')
 
-var app = require('../app')
-expressWs(app)
-
-
-//暴露出服务器收到的机器参数
-// var info
 
 // 加载mysql模块
 var mysql = require('mysql');
-
 var config = require('../config/dbconfig');
-
 var connection = mysql.createConnection(config);
 
 //SQL语句
@@ -23,7 +15,6 @@ var connection = mysql.createConnection(config);
 var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_of_hx,measure) VALUES(?,?,?,?,?,?)';
 
 var EventEmitter = require('events').EventEmitter
-
 var myevent = new EventEmitter();
 
 router.post('/', function(req, res, next) {
@@ -34,15 +25,7 @@ router.post('/', function(req, res, next) {
   }catch(err){
     console.log(err)
   }
-  //解析请求参数
-  // var params = URL.parse(req.url, true).query;
-  // console.log("@req",req)
-  // try { 
-  //   fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})   
-  //   //file written successfully
-  // } catch (err) {
-  //   console.error(err)
-  // }
+
   console.log("@",req.body.payload.params)
   var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
 

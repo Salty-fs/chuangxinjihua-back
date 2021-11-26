@@ -1,12 +1,13 @@
 const express = require('express')
 const expressWs = require('express-ws')
+var router = express.Router();
 
-const app = express()
-expressWs(app)
+// const app = express()
+expressWs(router)
 
-var myevent = require('./routes/getForce').myevent
+var myevent = require('./getForce').myevent
 
-app.ws('/', function (ws, req) {
+router.ws('/', function (ws, req) {
     console.log('connect success')
     console.log(ws)
     
@@ -27,4 +28,6 @@ app.ws('/', function (ws, req) {
     ws.on('close', function (e) {
       
     })
-})
+});
+
+module.exports = router;
