@@ -22,11 +22,12 @@ router.post('/', function(req, res, next) {
   //触发事件   
   try{
     myevent.emit('abc',data)
+    console.log(data);
   }catch(err){
     console.log(err)
   }
 
-  console.log("@",req.body)
+  console.log("@",req)
   var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
 
   connection.query(addSql,addSqlParams,function (err, result) {
