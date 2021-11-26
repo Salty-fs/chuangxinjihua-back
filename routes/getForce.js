@@ -28,7 +28,7 @@ router.post('/', function(req, res, next) {
   }
 
   console.log("@req",req)
-  console.log("@res",body)
+  console.log("@res",res)
   var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
 
   connection.query(addSql,addSqlParams,function (err, result) {
